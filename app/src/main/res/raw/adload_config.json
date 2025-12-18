@@ -1,0 +1,187 @@
+{
+  "adload_cache_time": 3600,
+  "adload_retry_num": 3,
+  "adload_max_time": 2,
+  "adload_poolsize_open": 1,
+  "adload_poolsize_inter": 1,
+  "adload_poolsize_video": 1,
+  "adload_trigger_timing_open": {
+    "open_app": false,
+    "play_finish": true,
+    "enter_background": false,
+    "receive_notification": false
+  },
+  "adload_trigger_timing_inter": {
+    "open_app": false,
+    "play_finish": true,
+    "enter_background": false,
+    "receive_notification": false
+  },
+  "adload_trigger_timing_video": {
+    "open_app": false,
+    "play_finish": true,
+    "enter_background": false,
+    "receive_notification": false
+  },
+  "config_list": [
+    {
+      "type":"open",
+      "config": {
+        "per_day": 100,
+        "per_hour": 50,
+        "per_min": 10
+      },
+      "configs": [
+        {
+          "platform":"adMob",
+          "per_day": 100,
+          "per_hour": 50,
+          "per_min": 10
+        },
+        {
+          "platform":"max",
+          "per_day": 100,
+          "per_hour": 100,
+          "per_min": 10
+        },
+        {
+          "platform":"topOn",
+          "per_day": 100,
+          "per_hour": 50,
+          "per_min": 10
+        }
+      ],
+      "areas": [
+        {
+          "area_key":"foreGroundAdv",
+          "configs": [
+            {
+              "platform":"adMob",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"max",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"topOn",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type":"inter",
+      "config": {
+        "per_day": 100,
+        "per_hour": 50,
+        "per_min": 10
+      },
+      "configs": [
+        {
+          "platform":"adMob",
+          "per_day": 100,
+          "per_hour": 50,
+          "per_min": 10
+        },
+        {
+          "platform":"max",
+          "per_day": 100,
+          "per_hour": 100,
+          "per_min": 10
+        },
+        {
+          "platform":"topOn",
+          "per_day": 100,
+          "per_hour": 50,
+          "per_min": 10
+        }
+      ],
+      "areas": [
+        {
+          "area_key":"default",
+          "configs": [
+            {
+              "platform":"adMob",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"max",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"topOn",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type":"video",
+      "config": {
+        "per_day": 100,
+        "per_hour": 50,
+        "per_min": 10
+      },
+      "configs": [
+        {
+          "platform":"adMob",
+          "per_day": 100,
+          "per_hour": 50,
+          "per_min": 10
+        },
+        {
+          "platform":"max",
+          "per_day": 100,
+          "per_hour": 100,
+          "per_min": 10
+        },
+        {
+          "platform":"topOn",
+          "per_day": 100,
+          "per_hour": 50,
+          "per_min": 10
+        }
+      ],
+      "areas": [
+        {
+          "area_key":"default",
+          "configs": [
+            {
+              "platform":"adMob",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"max",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"topOn",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -40,6 +40,7 @@ class MyApp: Application() {
 			val safeConfig = inputStream.bufferedReader().use { it.readText() }
 			Ad.init( BuildConfig.DEBUG, idConfig, safeConfig)
 
+			// TODO: 前后台切换时展示开屏广告示例
 //			if (BuildConfig.DEBUG) {
 //				val callback = object : AdCallback {
 //					private val TAG = "MyApp"
