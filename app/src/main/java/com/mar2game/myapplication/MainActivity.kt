@@ -140,6 +140,7 @@ class MainActivity : AppCompatActivity() {
 				Log.e(TAG, "admobVideo reward: $amount $type")
 			}
 		}
+		binding.admobBanner.addView(Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback))
 	}
 
 	fun setMax(callback: AdCallback?) {
@@ -157,6 +158,7 @@ class MainActivity : AppCompatActivity() {
 				Log.e(TAG, "maxVideo reward: $amount $type")
 			}
 		}
+		binding.maxBanner.addView(Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_max, "maxBanner", callback))
 	}
 
 	fun setTopOn(callback: AdCallback?) {

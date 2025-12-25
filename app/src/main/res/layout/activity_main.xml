@@ -71,6 +71,10 @@
                 android:text="播放admob激励视频"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <FrameLayout
+                android:id="@+id/admob_banner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
             <Button
                 android:id="@+id/max_open"
                 android:text="播放max开屏"
@@ -86,6 +90,11 @@
                 android:text="播放max激励视频"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <FrameLayout
+                android:id="@+id/max_banner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
             <Button
                 android:id="@+id/topon_open"
                 android:text="播放topon开屏"
