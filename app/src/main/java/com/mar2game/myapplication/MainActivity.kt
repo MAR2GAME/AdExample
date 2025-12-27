@@ -96,12 +96,12 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	fun setConfig() {
-		val inputStream = BiddingApplication.instance.resources.openRawResource(R.raw.adload_config)
+		val inputStream = resources.openRawResource(R.raw.adload_config)
 		val adload_config = inputStream.bufferedReader().use { it.readText() }
 		binding.configJson.setText(adload_config)
 		binding.setConfig.setOnClickListener {
 			AdConfig.updateConfigFromJson(binding.configJson.text.toString())
-			Toast.makeText(BiddingApplication.instance, "设置配置文件成功", Toast.LENGTH_LONG).show()
+			Toast.makeText(this, "设置配置文件成功", Toast.LENGTH_LONG).show()
 		}
 	}
 
