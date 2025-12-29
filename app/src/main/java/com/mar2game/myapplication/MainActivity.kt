@@ -246,4 +246,5 @@ class MainActivity : AppCompatActivity() {
 			it.visibility = View.GONE
 		}
 	}
+
 }
