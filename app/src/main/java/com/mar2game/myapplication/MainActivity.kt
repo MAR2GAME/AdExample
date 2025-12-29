@@ -12,6 +12,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.applovin.mediation.ads.MaxAdView
 import com.datatool.biddingsdk.AdLoader
 import com.datatool.biddingsdk.BiddingApplication
 import com.datatool.biddingsdk.R
@@ -27,6 +28,7 @@ import com.datatool.biddingsdk.config.AdShowCloseParam
 import com.datatool.biddingsdk.config.AdShowFailParam
 import com.datatool.biddingsdk.config.AdShowSuccessParam
 import com.datatool.biddingsdk.config.AdStartLoadParam
+import com.google.android.gms.ads.AdView
 import com.mar2game.myapplication.databinding.ActivityMainBinding
 
 
@@ -145,8 +147,12 @@ class MainActivity : AppCompatActivity() {
 				Log.e(TAG, "admobVideo reward: $amount $type")
 			}
 		}
-		showBanner()
-//		binding.admobBanner.addView(Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback))
+		binding.admobBanner.setOnClickListener {
+			showBanner()
+		}
+		binding.admobBannerHide.setOnClickListener {
+			hideBanner()
+		}
 	}
 
 	fun setMax(callback: AdCallback?) {
@@ -164,7 +170,6 @@ class MainActivity : AppCompatActivity() {
 				Log.e(TAG, "maxVideo reward: $amount $type")
 			}
 		}
-		binding.maxBanner.addView(Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_max, "maxBanner", callback))
 	}
 
 	fun setTopOn(callback: AdCallback?) {
@@ -188,25 +193,57 @@ class MainActivity : AppCompatActivity() {
 	var bannerContainer: FrameLayout?
 		get() = this.window.decorView.getTag(BANNER_VIEW_TAG_KEY) as? FrameLayout
 		set(value) = this.window.decorView.setTag(BANNER_VIEW_TAG_KEY, value)
-	fun showBanner() {
+
+	fun addBannerContainer() {
 		if (bannerContainer == null) {
 			bannerContainer = FrameLayout(this)
-//			val maxAd = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_max, "maxBanner", callback)
-			val admobAd = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback)
 			bannerContainer?.let {
 				val params = FrameLayout.LayoutParams(
 					ViewGroup.LayoutParams.MATCH_PARENT,
 					ViewGroup.LayoutParams.WRAP_CONTENT,
 					Gravity.BOTTOM
 				)
-				it.addView(admobAd)
 				addContentView(it, params)
 			}
 		}
 		bannerContainer?.visibility = View.VISIBLE
 	}
 
+	var banner: ViewGroup? = null
+	fun showBanner() {
+		if (bannerContainer == null) {
+			addBannerContainer()
+		}
+		if (banner == null) {
+			banner = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_max, "maxBanner", callback)
+			banner = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback)
+			bannerContainer?.addView(banner)
+		} else {
+			banner?.let {
+				it.visibility = View.VISIBLE
+				if (banner is AdView) {
+					val adView = banner as? AdView
+					adView?.resume()
+				}
+				if (banner is MaxAdView) {
+					val maxView = banner as? MaxAdView
+					maxView?.startAutoRefresh()
+				}
+			}
+		}
+	}
+
 	fun hideBanner() {
-		bannerContainer?.visibility = View.GONE
+		banner?.let {
+			if (banner is AdView) {
+				val adView = banner as? AdView
+				adView?.pause()
+			}
+			if (banner is MaxAdView) {
+				val maxView = banner as? MaxAdView
+				maxView?.stopAutoRefresh()
+			}
+			it.visibility = View.GONE
+		}
 	}
 }
