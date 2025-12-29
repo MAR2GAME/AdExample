@@ -74,6 +74,51 @@
               "per_min": 10
             }
           ]
+        },
+        {
+          "area_key":"bidOpen",
+          "configs": [
+            {
+              "platform":"adMob",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"max",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            },
+            {
+              "platform":"topOn",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            }
+          ]
+        },
+        {
+          "area_key":"admobOpen",
+          "configs": [
+            {
+              "platform":"adMob",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            }
+          ]
+        },
+        {
+          "area_key":"maxOpen",
+          "configs": [
+            {
+              "platform":"max",
+              "per_day": 100,
+              "per_hour": 50,
+              "per_min": 10
+            }
+          ]
         }
       ]
     },
