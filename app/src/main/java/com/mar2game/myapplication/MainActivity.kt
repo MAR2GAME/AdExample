@@ -1,7 +1,12 @@
 package com.mar2game.myapplication
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -140,7 +145,8 @@ class MainActivity : AppCompatActivity() {
 				Log.e(TAG, "admobVideo reward: $amount $type")
 			}
 		}
-		binding.admobBanner.addView(Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback))
+		showBanner()
+//		binding.admobBanner.addView(Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback))
 	}
 
 	fun setMax(callback: AdCallback?) {
@@ -176,5 +182,31 @@ class MainActivity : AppCompatActivity() {
 				Log.e(TAG, "toponVideo reward: $amount $type")
 			}
 		}
+	}
+
+	private val BANNER_VIEW_TAG_KEY = -1002
+	var bannerContainer: FrameLayout?
+		get() = this.window.decorView.getTag(BANNER_VIEW_TAG_KEY) as? FrameLayout
+		set(value) = this.window.decorView.setTag(BANNER_VIEW_TAG_KEY, value)
+	fun showBanner() {
+		if (bannerContainer == null) {
+			bannerContainer = FrameLayout(this)
+//			val maxAd = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_max, "maxBanner", callback)
+			val admobAd = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback)
+			bannerContainer?.let {
+				val params = FrameLayout.LayoutParams(
+					ViewGroup.LayoutParams.MATCH_PARENT,
+					ViewGroup.LayoutParams.WRAP_CONTENT,
+					Gravity.BOTTOM
+				)
+				it.addView(admobAd)
+				addContentView(it, params)
+			}
+		}
+		bannerContainer?.visibility = View.VISIBLE
+	}
+
+	fun hideBanner() {
+		bannerContainer?.visibility = View.GONE
 	}
 }
