@@ -215,7 +215,7 @@ class MainActivity : AppCompatActivity() {
 			addBannerContainer()
 		}
 		if (banner == null) {
-			banner = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_max, "maxBanner", callback)
+//			banner = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_max, "maxBanner", callback)
 			banner = Ad.getBannerAd(this@MainActivity, AdParam.ad_platform_admob, "admobBanner", callback)
 			bannerContainer?.addView(banner)
 		} else {
